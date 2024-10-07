@@ -41,6 +41,9 @@
       <div id="cumulative_chart"></div>
 
       <div id="highlight_chart"></div>
+
+      <div id="stacked_area_center_chart"></div>
+
       <div id="slider"></div>
     </div>
 
@@ -242,6 +245,14 @@
 
       // Embed the map specification
       vegaEmbed("#symbol_map", spec2)
+        .then(function (result) {
+          // Access the Vega view instance as result.view
+        })
+        .catch(console.error);
+
+      //stacked area center
+      var centerChartSpec = "js/stacked_area_center_chart.json"; // Reference to the new JSON file
+      vegaEmbed("#stacked_area_center_chart", centerChartSpec)
         .then(function (result) {
           // Access the Vega view instance as result.view
         })
