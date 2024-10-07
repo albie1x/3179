@@ -1,0 +1,96 @@
+{
+      "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+      "width": 800,
+      "height": 400,
+      "title": "Energy Consumption in Australian States (2010-2023)",
+      "params": [
+            {
+                  "name": "yearStep",
+                  "value": "2022-23",
+                  "bind": {
+                        "input": "select",
+                        "options": [
+                              "2010-11",
+                              "2011-12",
+                              "2012-13",
+                              "2013-14",
+                              "2014-15",
+                              "2015-16",
+                              "2016-17",
+                              "2017-18",
+                              "2018-19",
+                              "2019-20",
+                              "2020-21",
+                              "2021-22",
+                              "2022-23"
+                        ],
+                        "name": "Select Year: "
+                  }
+            }
+      ],
+      "data": {
+            "url": "js/STE_2021_AUST_GDA2020.topojson",
+            "format": {
+                  "type": "topojson",
+                  "feature": "STE_2021_AUST_GDA2020"
+            }
+      },
+      "projection": {
+            "type": "mercator",
+            "center": [
+                  133.7751,
+                  -25.2744
+            ],
+            "scale": 1000
+      },
+      "transform": [
+            {
+                  "lookup": "properties.STE_NAME21",
+                  "from": {
+                        "data": {
+                              "url": "data/energy_consumption_state.csv",
+                              "format": {
+                                    "type": "csv"
+                              }
+                        },
+                        "key": "State",
+                        "fields": [
+                              "Year",
+                              "GWh"
+                        ]
+                  }
+            },
+            {
+                  "filter": "datum.Year == yearStep"
+            }
+      ],
+      "mark": {
+            "type": "geoshape",
+            "stroke": "white",
+            "fill": "lightgray"
+      },
+      "encoding": {
+            "color": {
+                  "field": "GWh",
+                  "type": "quantitative",
+                  "scale": {
+                        "scheme": "blues"
+                  },
+                  "legend": {
+                        "title": "Energy Consumption (GWh)"
+                  }
+            },
+            "tooltip": [
+                  {
+                        "field": "properties.STE_NAME21",
+                        "type": "nominal",
+                        "title": "State"
+                  },
+                  {
+                        "field": "GWh",
+                        "type": "quantitative",
+                        "title": "Energy Consumption (GWh)"
+                  }
+            ]
+      }
+}

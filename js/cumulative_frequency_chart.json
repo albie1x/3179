@@ -1,0 +1,71 @@
+{
+      "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+      "description": "Cumulative Energy Consumption by State (1987-88 to 2022-23)",
+      "width": 800,
+      "height": 400,
+      "title": "Cumulative Energy Consumption by State (1987-88 to 2022-23)",
+      "data": {
+            "url": "data/energy_consumption_state.csv",
+            "format": {
+                  "type": "csv"
+            }
+      },
+      "encoding": {
+            "x": {
+                  "field": "Year",
+                  "type": "ordinal",
+                  "title": "Year",
+                  "axis": {
+                        "labelAngle": -45,
+                        "labelFontSize": 10
+                  }
+            },
+            "y": {
+                  "field": "GWh",
+                  "type": "quantitative",
+                  "title": "Cumulative Energy Consumption (GWh)"
+            },
+            "color": {
+                  "field": "State",
+                  "type": "nominal",
+                  "title": "State"
+            }
+      },
+      "layer": [
+            {
+                  "mark": "line"
+            },
+            {
+                  "params": [
+                        {
+                              "name": "hover",
+                              "select": {
+                                    "type": "point",
+                                    "on": "pointerover",
+                                    "clear": "pointerout"
+                              }
+                        }
+                  ],
+                  "mark": {
+                        "type": "circle",
+                        "tooltip": true
+                  },
+                  "encoding": {
+                        "opacity": {
+                              "condition": {
+                                    "param": "hover",
+                                    "value": 1
+                              },
+                              "value": 0
+                        },
+                        "size": {
+                              "condition": {
+                                    "param": "hover",
+                                    "value": 48
+                              },
+                              "value": 100
+                        }
+                  }
+            }
+      ]
+}
