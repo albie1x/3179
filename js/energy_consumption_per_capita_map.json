@@ -11,7 +11,7 @@
       },
       "transform": [
             {
-                  "calculate": "datum.GWh / datum.Population * 1000",
+                  "calculate": "datum.GWh / datum.Population * 1000" ,
                   "as": "GWh_per_capita"
             },
             {
