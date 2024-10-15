@@ -1,0 +1,91 @@
+{
+      "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+      "width": 700,
+      "height": 460,
+      "data": {
+            "url": "data/energy_consumption_state.csv",
+            "format": {
+                  "type": "csv"
+            }
+      },
+      "params": [
+            {
+                  "name": "population_select",
+                  "value": 22000,
+                  "bind": {
+                        "input": "range",
+                        "min": 231292,
+                        "max": 8811429,
+                        "step": 100000,
+                        "name": "Population more than: "
+                  }
+            }
+      ],
+      "transform": [
+            {
+                  "filter": "datum.Population >= population_select"
+            }
+      ],
+      "mark": "bar",
+      "encoding": {
+            "y": {
+                  "field": "State",
+                  "type": "nominal",
+                  "sort": "-x",
+                  "axis": {
+                        "title": "State"
+                  }
+            },
+            "x": {
+                  "field": "GWh",
+                  "type": "quantitative",
+                  "axis": {
+                        "title": "Energy Consumption (GWh)"
+                  }
+            },
+            "color": {
+                  "field": "State",
+                  "type": "nominal",
+                  "scale": {
+                        "domain": [
+                              "New South Wales",
+                              "Victoria",
+                              "Queensland",
+                              "South Australia",
+                              "Western Australia",
+                              "Tasmania",
+                              "Northern Territory"
+                        ],
+                        "range": [
+                              "#87CEEB",
+                              "#000080",
+                              "#FFA500",
+                              "#FF0000",
+                              "#33FFF6",
+                              "#006A4E",
+                              "#913831"
+                        ]
+                  },
+                  "legend": {
+                        "title": "State"
+                  }
+            },
+            "tooltip": [
+                  {
+                        "field": "State",
+                        "type": "nominal",
+                        "title": "State"
+                  },
+                  {
+                        "field": "Population",
+                        "type": "quantitative",
+                        "title": "Population"
+                  },
+                  {
+                        "field": "GWh",
+                        "type": "quantitative",
+                        "title": "Energy Consumption (GWh)"
+                  }
+            ]
+      }
+}

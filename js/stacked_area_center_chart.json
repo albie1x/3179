@@ -41,8 +41,29 @@
             },
             "color": {
                   "field": "State",
+                  "type": "nominal",
                   "scale": {
-                        "scheme": "category20b"
+                        "domain": [
+                              "New South Wales",
+                              "Victoria",
+                              "Queensland",
+                              "South Australia",
+                              "Western Australia",
+                              "Tasmania",
+                              "Northern Territory"
+                        ],
+                        "range": [
+                              "#87CEEB",
+                              "#000080",
+                              "#FFA500",
+                              "#FF0000",
+                              "#33FFF6",
+                              "#006A4E",
+                              "#913831"
+                        ]
+                  },
+                  "legend": {
+                        "title": "State"
                   }
             },
             "opacity": {

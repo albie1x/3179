@@ -1,0 +1,111 @@
+{
+      "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+      "width": 450,
+      "height": 250,
+      "title": "Energy Consumption per Capita in Australian States (2010-2023)",
+      "data": {
+            "url": "data/energy_consumption_state.csv",
+            "format": {
+                  "type": "csv"
+            }
+      },
+      "transform": [
+            {
+                  "calculate": "datum.GWh / datum.Population * 1000",
+                  "as": "GWh_per_capita"
+            },
+            {
+                  "filter": "datum.Year == yearLabel"
+            },
+            {
+                  "lookup": "State",
+                  "from": {
+                        "data": {
+                              "url": "js/STE_2021_AUST_GDA2020.topojson",
+                              "format": {
+                                    "type": "topojson",
+                                    "feature": "STE_2021_AUST_GDA2020"
+                              }
+                        },
+                        "key": "properties.STE_NAME21",
+                        "fields": [
+                              "properties",
+                              "type",
+                              "geometry"
+                        ]
+                  }
+            }
+      ],
+      "params": [
+            {
+                  "name": "yearLabel",
+                  "value": "2022",
+                  "bind": {
+                        "input": "radio",
+                        "options": [
+                              "2010",
+                              "2011",
+                              "2012",
+                              "2013",
+                              "2014",
+                              "2015",
+                              "2016",
+                              "2017",
+                              "2018",
+                              "2019",
+                              "2020",
+                              "2021",
+                              "2022"
+                        ],
+                        "name": "Select Year: "
+                  }
+            }
+      ],
+      "projection": {
+            "type": "mercator",
+            "center": [
+                  135,
+                  -28
+            ],
+            "scale": 350
+      },
+      "mark": {
+            "type": "geoshape",
+            "stroke": "white"
+      },
+      "encoding": {
+            "color": {
+                  "field": "GWh_per_capita",
+                  "type": "quantitative",
+                  "scale": {
+                        "scheme": "reds",
+                        "domainMin": 0
+                  },
+                  "legend": {
+                        "title": "Energy Consumption per Capita (GWh/Person)"
+                  }
+            },
+            "tooltip": [
+                  {
+                        "field": "properties.STE_NAME21",
+                        "type": "nominal",
+                        "title": "State"
+                  },
+                  {
+                        "field": "GWh",
+                        "type": "quantitative",
+                        "title": "Energy Consumption (GWh)"
+                  },
+                  {
+                        "field": "Population",
+                        "type": "quantitative",
+                        "title": "Population"
+                  },
+                  {
+                        "field": "GWh_per_capita",
+                        "type": "quantitative",
+                        "title": "GWh per Capita"
+                  }
+            ]
+      }
+}

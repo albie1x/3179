@@ -1,7 +1,7 @@
 {
       "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
       "description": "Cumulative Energy Consumption by State (1987-88 to 2022-23)",
-      "width": 800,
+      "width": 600,
       "height": 400,
       "title": "Cumulative Energy Consumption by State (1987-88 to 2022-23)",
       "data": {
@@ -28,7 +28,29 @@
             "color": {
                   "field": "State",
                   "type": "nominal",
-                  "title": "State"
+                  "scale": {
+                        "domain": [
+                              "New South Wales",
+                              "Victoria",
+                              "Queensland",
+                              "South Australia",
+                              "Western Australia",
+                              "Tasmania",
+                              "Northern Territory"
+                        ],
+                        "range": [
+                              "#87CEEB",
+                              "#000080",
+                              "#FFA500",
+                              "#FF0000",
+                              "#33FFF6",
+                              "#006A4E",
+                              "#913831"
+                        ]
+                  },
+                  "legend": {
+                        "title": "State"
+                  }
             }
       },
       "layer": [

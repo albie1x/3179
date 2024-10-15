@@ -1,92 +1,92 @@
-Year,State,GWh,STE_CODE21
-2010-11,New South Wales,79855.3,1
-2011-12,New South Wales,77112.7,1
-2012-13,New South Wales,73482.9,1
-2013-14,New South Wales,71637.4,1
-2014-15,New South Wales,72569.2,1
-2015-16,New South Wales,74468.4,1
-2016-17,New South Wales,75499.4,1
-2017-18,New South Wales,76634.8,1
-2018-19,New South Wales,77303.8,1
-2019-20,New South Wales,76246.7,1
-2020-21,New South Wales,75565.3,1
-2021-22,New South Wales,78197.2,1
-2022-23,New South Wales,79037.0,1
-2010-11,Victoria,79855.3,2
-2011-12,Victoria,77112.7,2
-2012-13,Victoria,73482.9,2
-2013-14,Victoria,71637.4,2
-2014-15,Victoria,72569.2,2
-2015-16,Victoria,74468.4,2
-2016-17,Victoria,75499.4,2
-2017-18,Victoria,76634.8,2
-2018-19,Victoria,77303.8,2
-2019-20,Victoria,76246.7,2
-2020-21,Victoria,75565.3,2
-2021-22,Victoria,78197.2,2
-2022-23,Victoria,79037.0,2
-2010-11,Queensland,58570.0,3
-2011-12,Queensland,58841.0,3
-2012-13,Queensland,60645.6,3
-2013-14,Queensland,59720.5,3
-2014-15,Queensland,61981.6,3
-2015-16,Queensland,63913.2,3
-2016-17,Queensland,64784.8,3
-2017-18,Queensland,63993.1,3
-2018-19,Queensland,65144.1,3
-2019-20,Queensland,64932.3,3
-2020-21,Queensland,65229.6,3
-2021-22,Queensland,66139.3,3
-2022-23,Queensland,66661.8,3
-2010-11,Western Australia,31394.6,5
-2011-12,Western Australia,31548.6,5
-2012-13,Western Australia,33290.1,5
-2013-14,Western Australia,36679.6,5
-2014-15,Western Australia,37780.2,5
-2015-16,Western Australia,38735.3,5
-2016-17,Western Australia,40013.8,5
-2017-18,Western Australia,41151.2,5
-2018-19,Western Australia,41910.8,5
-2019-20,Western Australia,43396.0,5
-2020-21,Western Australia,43515.3,5
-2021-22,Western Australia,44549.3,5
-2022-23,Western Australia,44478.2,5
-2010-11,South Australia,15924.6,4
-2011-12,South Australia,15492.1,4
-2012-13,South Australia,15750.6,4
-2013-14,South Australia,15941.2,4
-2014-15,South Australia,15636.2,4
-2015-16,South Australia,15967.5,4
-2016-17,South Australia,15392.1,4
-2017-18,South Australia,15420.3,4
-2018-19,South Australia,15530.8,4
-2019-20,South Australia,15688.1,4
-2020-21,South Australia,15696.1,4
-2021-22,South Australia,15887.9,4
-2022-23,South Australia,16994.2,4
-2010-11,Tasmania,12,22.7,6
-2011-12,Tasmania,11,43.3,6
-2012-13,Tasmania,11,00.0,6
-2013-14,Tasmania,11,37.9,6
-2014-15,Tasmania,11,14.3,6
-2015-16,Tasmania,11,55.4,6
-2016-17,Tasmania,11,92.1,6
-2017-18,Tasmania,12,32.1,6
-2018-19,Tasmania,11,83.0,6
-2019-20,Tasmania,11,89.2,6
-2020-21,Tasmania,11,78.0,6
-2021-22,Tasmania,12,33.1,6
-2022-23,Tasmania,12,67.7,6
-2010-11,Northern Territory,3158.7,7
-2011-12,Northern Territory,3160.1,7
-2012-13,Northern Territory,3362.3,7
-2013-14,Northern Territory,3465.8,7
-2014-15,Northern Territory,2997.0,7
-2015-16,Northern Territory,3066.0,7
-2016-17,Northern Territory,2991.2,7
-2017-18,Northern Territory,3509.8,7
-2018-19,Northern Territory,4457.5,7
-2019-20,Northern Territory,4999.6,7
-2020-21,Northern Territory,4901.6,7
-2021-22,Northern Territory,5306.4,7
-2022-23,Northern Territory,5006.6,7
+Year,State,GWh,STE_CODE21G,Population
+2010,New South Wales,79855.3,1,7586514
+2011,New South Wales,77112.7,1,7680783
+2012,New South Wales,73482.9,1,7787289
+2013,New South Wales,71637.4,1,7897152
+2014,New South Wales,72569.2,1,8011981
+2015,New South Wales,74468.4,1,8135962
+2016,New South Wales,75499.4,1,8270362
+2017,New South Wales,76634.8,1,8380557
+2018,New South Wales,77303.8,1,8482478
+2019,New South Wales,76246.7,1,8555513
+2020,New South Wales,75565.3,1,8549570
+2021,New South Wales,78197.2,1,8623619
+2022,New South Wales,79037.0,1,8811429
+2010,Victoria,79855.3,2,5537817
+2011,Victoria,77112.7,2,5651091
+2012,Victoria,73482.9,2,5772669
+2013,Victoria,71637.4,2,5894917
+2014,Victoria,72569.2,2,6022322
+2015,Victoria,74468.4,2,6173172
+2016,Victoria,75499.4,2,6302608
+2017,Victoria,76634.8,2,6423038
+2018,Victoria,77303.8,2,6537305
+2019,Victoria,76246.7,2,6615046
+2020,Victoria,75565.3,2,6547822
+2021,Victoria,78197.2,2,6630631
+2022,Victoria,79037.0,2,6818442
+2010,Queensland,58570.0,3,4476778
+2011,Queensland,58841.0,3,4568687
+2012,Queensland,60645.6,3,4652824
+2013,Queensland,59720.5,3,4719653
+2014,Queensland,61981.6,3,4777692
+2015,Queensland,63913.2,3,4845152
+2016,Queensland,64784.8,3,4926380
+2017,Queensland,63993.1,3,5006623
+2018,Queensland,65144.1,3,5088847
+2019,Queensland,64932.3,3,5165613
+2020,Queensland,65229.6,3,5215814
+2021,Queensland,66139.3,3,5320941
+2022,Queensland,66661.8,3,5461367
+2010,Western Australia,31394.6,5,2353409
+2011,Western Australia,31548.6,5,2425507
+2012,Western Australia,33290.1,5,2486944
+2013,Western Australia,36679.6,5,2517608
+2014,Western Australia,37780.2,5,2540672
+2015,Western Australia,38735.3,5,2555978
+2016,Western Australia,40013.8,5,2585720
+2017,Western Australia,41151.2,5,2617792
+2018,Western Australia,41910.8,5,2659625
+2019,Western Australia,43396.0,5,2712912
+2020,Western Australia,43515.3,5,2749365
+2021,Western Australia,44549.3,5,2791794
+2022,Western Australia,44478.2,5,2883245
+2010,South Australia,15924.6,4,1639614
+2011,South Australia,15492.1,4,1656725
+2012,South Australia,15750.6,4,1671488
+2013,South Australia,15941.2,4,1686945
+2014,South Australia,15636.2,4,1700668
+2015,South Australia,15967.5,4,1712843
+2016,South Australia,15392.1,4,1728673
+2017,South Australia,15420.3,4,1746137
+2018,South Australia,15530.8,4,1767395
+2019,South Australia,15688.1,4,1790355
+2020,South Australia,15696.1,4,1802601
+2021,South Australia,15887.9,4,1821215
+2022,South Australia,16994.2,4,1853064
+2010,Tasmania,1222.7,6,511483
+2011,Tasmania,1143.3,6,511724
+2012,Tasmania,1100.0,6,512231
+2013,Tasmania,1137.9,6,513621
+2014,Tasmania,1114.3,6,515117
+2015,Tasmania,1155.4,6,517514
+2016,Tasmania,1192.1,6,526762
+2017,Tasmania,1232.1,6,537291
+2018,Tasmania,1183.0,6,547841
+2019,Tasmania,1189.2,6,557578
+2020,Tasmania,1178.0,6,567239
+2021,Tasmania,1233.1,6,571051
+2022,Tasmania,1267.7,6,573479
+2010,Northern Territory,3158.7,7,231292
+2011,Northern Territory,3160.1,7,235915
+2012,Northern Territory,3362.3,7,241722
+2013,Northern Territory,3465.8,7,242894
+2014,Northern Territory,2997.0,7,244692
+2015,Northern Territory,3066.0,7,245678
+2016,Northern Territory,2991.2,7,247412
+2017,Northern Territory,3509.8,7,247095
+2018,Northern Territory,4457.5,7,246559
+2019,Northern Territory,4999.6,7,247428
+2020,Northern Territory,4901.6,7,248151
+2021,Northern Territory,5306.4,7,250228
+2022,Northern Territory,5006.6,7,252955

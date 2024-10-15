@@ -1,0 +1,153 @@
+{
+      "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+      "description": "Energy Consumption by State (2010-2023) Bar chart",
+      "width": 600,
+      "height": 400,
+      "data": {
+            "url": "data/energy_consumption_state.csv",
+            "format": {
+                  "type": "csv"
+            }
+      },
+      "vconcat": [
+            {
+                  "width": 600,
+                  "height": 400,
+                  "layer": [
+                        {
+                              "params": [
+                                    {
+                                          "name": "brush",
+                                          "select": {
+                                                "type": "interval",
+                                                "encodings": [
+                                                      "x"
+                                                ]
+                                          }
+                                    }
+                              ],
+                              "mark": "bar",
+                              "encoding": {
+                                    "x": {
+                                          "field": "State",
+                                          "type": "nominal",
+                                          "title": "State",
+                                          "axis": {
+                                                "labelAngle": -45
+                                          }
+                                    },
+                                    "y": {
+                                          "aggregate": "sum",
+                                          "field": "GWh",
+                                          "type": "quantitative",
+                                          "title": "Total Energy Consumption (GWh)"
+                                    },
+                                    "color": {
+                                          "field": "State",
+                                          "type": "nominal",
+                                          "scale": {
+                                                "domain": [
+                                                      "New South Wales",
+                                                      "Victoria",
+                                                      "Queensland",
+                                                      "South Australia",
+                                                      "Western Australia",
+                                                      "Tasmania",
+                                                      "Northern Territory"
+                                                ],
+                                                "range": [
+                                                      "#87CEEB",
+                                                      "#000080",
+                                                      "#FFA500",
+                                                      "#FF0000",
+                                                      "#33FFF6",
+                                                      "#006A4E",
+                                                      "#913831"
+                                                ]
+                                          },
+                                          "legend": {
+                                                "title": "State"
+                                          }
+                                    },
+                                    "opacity": {
+                                          "condition": {
+                                                "param": "brush",
+                                                "value": 1
+                                          },
+                                          "value": 0.7
+                                    },
+                                    "tooltip": [
+                                          {
+                                                "field": "State",
+                                                "type": "nominal",
+                                                "title": "State"
+                                          },
+                                          {
+                                                "field": "GWh",
+                                                "type": "quantitative",
+                                                "aggregate": "sum",
+                                                "title": "Total Energy Consumption (GWh)"
+                                          }
+                                    ]
+                              }
+                        },
+                        {
+                              "transform": [
+                                    {
+                                          "filter": {
+                                                "param": "brush"
+                                          }
+                                    }
+                              ],
+                              "mark": "rule",
+                              "encoding": {
+                                    "y": {
+                                          "aggregate": "sum",
+                                          "field": "GWh",
+                                          "type": "quantitative"
+                                    },
+                                    "color": {
+                                          "value": "firebrick"
+                                    },
+                                    "size": {
+                                          "value": 3
+                                    }
+                              }
+                        }
+                  ]
+            },
+            {
+                  "width": 800,
+                  "height": 100,
+                  "transform": [
+                        {
+                              "filter": {
+                                    "param": "brush"
+                              }
+                        }
+                  ],
+                  "mark": "text",
+                  "encoding": {
+                        "text": {
+                              "aggregate": "sum",
+                              "field": "GWh",
+                              "type": "quantitative",
+                              "format": ".2f",
+                              "title": "Selected Group Total Energy (GWh)"
+                        },
+                        "color": {
+                              "value": "firebrick"
+                        },
+                        "size": {
+                              "value": 15
+                        },
+                        "x": {
+                              "value": 10
+                        },
+                        "y": {
+                              "value": 10
+                        }
+                  }
+            }
+      ]
+}

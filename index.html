@@ -1,264 +1,171 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
-    <!-- Import Vega & Vega-Lite -->
     <script src="https://cdn.jsdelivr.net/npm/vega@5.20.2"></script>
     <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.1.0"></script>
     <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.17.0"></script>
 
-    <!-- CSS file -->
     <link rel="stylesheet" type="text/css" href="css/styles.css" media="all" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Lora:ital,wght@0,400;1,400&display=swap"
+    />
 
-    <style>
-      /* Simple layout for the map */
-      #symbol_map {
-        width: 60%;
-        height: 100vh;
-      }
-
-      /* Layout for the stacked area chart */
-      #stacked_area_chart {
-        width: 100%;
-        height: 50vh;
-      }
-
-      #slider {
-        width: 100%;
-        padding: 20px;
-        text-align: center;
-      }
-    </style>
+    <title>Energy Consumption Visualization</title>
   </head>
+
   <body>
-    <div class="descripton">
-      <h1>Energy Consumption By state 2010 to 2023</h1>
+    <div class="center">
+      <h1>Energy Consumption in Australia (2010-2023)</h1>
+
+      <hr />
+      <div class="map-container">
+        <div id="section1" class="map-section">
+          <h2>Australian States Energy Consumption Map</h2>
+          <div id="symbol_map"></div>
+          <p class="text">
+            This map shows the total energy consumption in Australian states.
+            Larger states like New South Wales and Victoria generally have
+            higher energy demands due to larger populations and economic
+            activities. This Map highlights the idea that larger states in have
+            higher energy consumption in genral becuase of thier size. You can
+            click on the year you want to see the consumption for each state(I
+            could not get the slider to work on this map).
+          </p>
+        </div>
+
+        <div id="section9" class="map-section">
+          <h2>Energy Consumption per Capita Map</h2>
+          <div id="energy_consumption_per_capita_map"></div>
+          <p class="text">
+            This map shows energy consumption per capita, offering a comparison
+            of how much energy is used relative to the population of each state.
+            Even states with high total consumption like New South Wales may
+            have lower consumption per capita. This map highlights that they are
+            two sides to the story as with the the map on the left you see that
+            New South Wales have a higher consumption but when you look at this
+            map, you see a differnt picture, with those states per cpiata not as
+            high as it is for the other states. You can select a on a year to
+            see per capita for each state for that year(i did not get the slider
+            working for this map).
+          </p>
+        </div>
+      </div>
+
+      <hr />
     </div>
-    <div class="container">
-      <div id="symbol_map"></div>
 
-      <!-- Div for stacked area chart -->
-      <div id="stacked_area_chart"></div>
+    <hr />
 
-      <!-- Div for cumulative frequency distribution chart -->
-      <div id="cumulative_chart"></div>
+    <div id="section3">
+      <h2>Cumulative Frequency Distribution</h2>
+      <div id="cumulative_chart" class="graph"></div>
+      <p class="text">
+        The cumulative frequency distribution chart shows the total energy
+        consumption accumulating over the years, providing a broader picture of
+        trends in energy usage across states. We can see that Energry
+        consumption is increseasing for all the States, which underscores that
+        as the years increase we can expect the energy consumption to
+        inscrease.Thus this Map is good for predicting as energy consumption has
+        been increasing for all the States for the last 13 years.
+      </p>
+    </div>
 
-      <div id="highlight_chart"></div>
+    <hr />
 
-      <div id="stacked_area_center_chart"></div>
+    <div id="section5">
+      <h2>Stacked Area Center Chart</h2>
+      <div id="stacked_area_center_chart" class="graph"></div>
+      <p class="text">
+        The stacked area chart compares energy consumption across Australian
+        states. It highlights the relative contribution of each state to the
+        total energy usage in Australia over the years.You can click on a state
+        on the legend on the right side to isolate that State.
+      </p>
+    </div>
 
-      <div id="slider"></div>
+    <hr />
+
+    <div id="section6">
+      <h2>Energy Consumption by State (2010-2023) Bar Chart Average</h2>
+      <div id="bar_graph" class="graph"></div>
+      <p class="text">
+        This bar chart allows you to filter energy consumption by state based on
+        their population size. You can interact with the graph by seeing the
+        Average of that State or States. You can see the Average number just
+        below the graph in red text.
+      </p>
+    </div>
+
+    <hr />
+
+    <div id="section7">
+      <h2>Interactive Bubble Chart</h2>
+      <div id="interactive_bubble_chart" class="graph"></div>
+      <p class="text">
+        The interactive bubble chart shows the relationship between population
+        size and energy consumption across Australian states. The size of the
+        bubbles indicates total energy consumption for each state, while the
+        x-axis represents population. We can see that the population size
+        greatly influences the total energy consumption for that State.As we can
+        see that both New South Wales and Victoria having the highest
+        populations both have the highest energy consumption as opose to
+        Tasimina having the lowest population and the lowest energy consumption.
+        You can use the slider to see through the years from 2010 to 2023.
+      </p>
+    </div>
+
+    <hr />
+
+    <div id="section8">
+      <h2>Bar Chart with Interactive Population Filter</h2>
+      <div
+        id="bar_chart_with_interactive_population_filter"
+        class="graph"
+      ></div>
+      <p>
+        This bar chart allows you to filter energy consumption by state based on
+        their population size. It offers insight into how population levels
+        might influence the energy needs of different regions as we see that New
+        South Wales and Victoria once again are the highest enegry consumption
+        but this time wee see the reason why they do?.We see that energy
+        consumption for both New South Wales and Victoria is high as a result of
+        thier population. This looks at their population rather than per capita.
+        consumption for them is
+      </p>
     </div>
 
     <script type="text/javascript">
-      // Embed NSW energy consumption map
-      var spec2 = "js/energy_consumption_map.json";
-      vegaEmbed("#symbol_map", spec2)
-        .then(function (result) {
-          // Access the Vega view instance as result.view
-        })
-        .catch(console.error);
+      var vg1 = "js/energy_consumption_map.json";
+      vegaEmbed("#symbol_map", vg1).catch(console.error);
 
-      // Embed the stacked area chart
-      var stackedAreaSpec = {
-        $schema: "https://vega.github.io/schema/vega-lite/v5.json",
-        width: 800,
-        height: 400,
-        title:
-          "Stacked Area Chart: Energy Consumption by State (2010-11 to 2022-23)",
-        data: {
-          url: "data/energy_consumption_state.csv",
-          format: { type: "csv" },
-        },
-        mark: "area",
-        encoding: {
-          x: {
-            field: "Year",
-            type: "ordinal",
-            title: "Year",
-            axis: {
-              labelAngle: -45,
-              labelFontSize: 14,
-            },
-          },
-          y: {
-            aggregate: "sum",
-            field: "GWh",
-            type: "quantitative",
-            title: "Total Energy Consumption (GWh)",
-          },
-          color: {
-            field: "State",
-            type: "nominal",
-            title: "State",
-          },
-          tooltip: [
-            { field: "State", type: "nominal", title: "State" },
-            { field: "Year", type: "nominal", title: "Year" },
-            {
-              aggregate: "sum",
-              field: "GWh",
-              type: "quantitative",
-              title: "Energy Consumption (GWh)",
-            },
-          ],
-        },
-      };
+      var vg2 = "js/stacked_area_chart.json";
+      vegaEmbed("#stacked_area_chart", vg2).catch(console.error);
 
-      // Embed the chart in the div with id 'stacked_area_chart'
-      vegaEmbed("#stacked_area_chart", stackedAreaSpec)
-        .then(function (_result) {
-          // Access the Vega view instance as result.view if needed
-        })
-        .catch(console.error);
+      var vg3 = "js/cumulative_frequency_chart.json";
+      vegaEmbed("#cumulative_chart", vg3).catch(console.error);
 
-      var cumulativeSpecFile = "js/cumulative_frequency_chart.json";
-      vegaEmbed("#cumulative_chart", cumulativeSpecFile)
-        .then(function (result) {
-          // Access the Vega view instance as result.view
-        })
-        .catch(console.error);
+      var vg4 = "js/highlight_chart.json";
+      vegaEmbed("#highlight_chart", vg4).catch(console.error);
 
-      // var energyConsumptionSpec = "js/energy_consumption_chart.json";
-      // vegaEmbed("#energy_consumption_chart", energyConsumptionSpec)
-      //   .then(function (result) {
-      //     // Access the Vega view instance as result.view
-      //   })
-      //   .catch(console.error);
+      var vg5 = "js/stacked_area_center_chart.json";
+      vegaEmbed("#stacked_area_center_chart", vg5).catch(console.error);
 
-      //slider
-      var spec2 = {
-        $schema: "https://vega.github.io/schema/vega-lite/v5.json",
-        width: 800,
-        height: 400,
-        title: "Energy Consumption in New South Wales (1987-88 to 2022-23)",
-        params: [
-          {
-            name: "yearStep",
-            value: "1987-88",
-            bind: {
-              input: "select",
-              options: [
-                "1987-88",
-                "1988-89",
-                "1989-90",
-                "1990-91",
-                "1991-92",
-                "1992-93",
-                "1993-94",
-                "1994-95",
-                "1995-96",
-                "1996-97",
-                "1997-98",
-                "1998-99",
-                "1999-00",
-                "2000-01",
-                "2001-02",
-                "2002-03",
-                "2003-04",
-                "2004-05",
-                "2005-06",
-                "2006-07",
-                "2007-08",
-                "2008-09",
-                "2009-10",
-                "2010-11",
-                "2011-12",
-                "2012-13",
-                "2013-14",
-                "2014-15",
-                "2015-16",
-                "2016-17",
-                "2017-18",
-                "2018-19",
-                "2019-20",
-                "2020-21",
-                "2021-22",
-                "2022-23",
-              ],
-              name: "Year: ",
-            },
-          },
-        ],
-        data: {
-          url: "js/STE_2021_AUST_GDA2020.topojson",
-          format: {
-            type: "topojson",
-            feature: "STE_2021_AUST_GDA2020",
-          },
-        },
-        projection: {
-          type: "mercator",
-          center: [133.7751, -25.2744],
-          scale: 1000,
-        },
-        transform: [
-          {
-            lookup: "properties.STE_CODE21",
-            from: {
-              data: {
-                url: "data/energy_consumption_state.csv",
-                format: {
-                  type: "csv",
-                },
-              },
-              key: "STE_CODE21",
-              fields: ["GWh", "Year"],
-            },
-          },
-          {
-            filter: "datum.Year == yearStep",
-          },
-        ],
-        mark: {
-          type: "geoshape",
-          stroke: "white",
-          fill: "lightgray",
-        },
-        encoding: {
-          color: {
-            field: "GWh",
-            type: "quantitative",
-            scale: {
-              scheme: "blues",
-            },
-            legend: {
-              title: "Energy Consumption (GWh)",
-            },
-          },
-          tooltip: [
-            {
-              field: "properties.STE_NAME21",
-              type: "nominal",
-              title: "State",
-            },
-            {
-              field: "GWh",
-              type: "quantitative",
-              title: "Energy Consumption (GWh)",
-            },
-            {
-              field: "Year",
-              type: "ordinal",
-              title: "Year",
-            },
-          ],
-        },
-      };
+      var vg6 = "js/bar_graph.json";
+      vegaEmbed("#bar_graph", vg6).catch(console.error);
 
-      // Embed the map specification
-      vegaEmbed("#symbol_map", spec2)
-        .then(function (result) {
-          // Access the Vega view instance as result.view
-        })
-        .catch(console.error);
+      var vg7 = "js/interactive_bubble_chart.json";
+      vegaEmbed("#interactive_bubble_chart", vg7).catch(console.error);
 
-      //stacked area center
-      var centerChartSpec = "js/stacked_area_center_chart.json"; // Reference to the new JSON file
-      vegaEmbed("#stacked_area_center_chart", centerChartSpec)
-        .then(function (result) {
-          // Access the Vega view instance as result.view
-        })
-        .catch(console.error);
+      var vg8 = "js/bar_chart_with_interactive_population_filter.json";
+      vegaEmbed("#bar_chart_with_interactive_population_filter", vg8).catch(
+        console.error
+      );
+
+      var vg9 = "js/energy_consumption_per_capita_map.json";
+      vegaEmbed("#energy_consumption_per_capita_map", vg9).catch(console.error);
     </script>
   </body>
 </html>
